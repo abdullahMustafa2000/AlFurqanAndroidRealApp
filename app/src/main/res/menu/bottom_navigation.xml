@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homePage_bn"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home_icon_title" />
+    <item
+        android:id="@+id/listening_bn"
+        android:icon="@drawable/audiance_icon"
+        android:title="@string/audiences" />
+    <item
+        android:id="@+id/sebha_bn"
+        android:title="@string/sebha"
+        android:icon="@drawable/ic_sebha" />
+</menu>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/copy_aya_txt"
+        android:title="@string/copy_aya" />
+
+    <item
+        android:id="@+id/mark_aya"
+        android:title="@string/save_aya" />
+
+</menu>

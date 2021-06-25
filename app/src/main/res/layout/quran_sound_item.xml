@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/audio_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="4dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/play_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/listening_sura_name"
+            android:layout_alignBottom="@id/listening_sura_name" />
+
+        <TextView
+            android:id="@+id/listening_sura_name"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/almarai"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="11pt"/>
+
+    </RelativeLayout>
+</LinearLayout>

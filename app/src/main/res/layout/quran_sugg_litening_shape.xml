@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@drawable/sugg_quran_shape"
+        android:src="@drawable/suran_name_shape"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent=".6"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/quran_sugg_listen_des_shape"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        android:paddingEnd="16dp"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:id="@+id/listen_reciterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quran"
+            android:textColor="@color/white"
+            android:textSize="11pt"
+            android:fontFamily="@font/almarai"/>
+
+        <TextView
+            android:id="@+id/listen_suraName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quran"
+            android:textColor="@color/white"
+            android:fontFamily="@font/almarai"
+            android:textSize="10pt"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

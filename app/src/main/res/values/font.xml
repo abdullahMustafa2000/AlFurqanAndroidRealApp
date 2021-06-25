@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="sura_name_style">
+        <item name="android:textSize">14pt</item>
+        <item name="android:fontFamily">@font/almarai</item>
+    </style>
+
+    <style name="basmala_style">
+        <item name="android:textSize">12pt</item>
+        <item name="android:fontFamily">@font/almarai</item>
+    </style>
+</resources>

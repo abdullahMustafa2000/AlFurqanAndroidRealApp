@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.islamicApp.AlFurkan.ui.homeActivity.Fragments.home.HomeFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/home_loading_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:id="@+id/search_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/search_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bar"
+            android:fontFamily="@font/almarai"
+            android:padding="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/search_text_fs"
+            android:transitionName="searchTransition" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/search_bar_view"
+            android:layout_alignEnd="@id/search_bar_view"
+            android:layout_alignRight="@id/search_bar_view"
+            android:layout_alignBottom="@id/search_bar_view"
+            android:gravity="center"
+            android:text="@string/home_search"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/search_text_fs"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search_icon"
+            android:layout_alignTop="@id/search_bar_view"
+            android:layout_alignBottom="@id/search_bar_view"
+            android:layout_alignStart="@id/search_bar_view"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingStart="10dp"
+            android:layout_alignLeft="@id/search_bar_view"
+            app:tint="@color/white" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/read_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/search_section">
+        <RelativeLayout
+            android:id="@+id/azkar_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintWidth_percent=".5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rv_azkar_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/azkar"
+                android:textColor="@color/black"
+                android:textSize="@dimen/titles_fs"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/almarai"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_azkar_title"
+                android:background="@drawable/rv_background">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/azkar_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/more_azkar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="@string/more"
+                    android:textColor="@color/main_color"
+                    android:textSize="@dimen/more_text_fs"
+                    android:layout_margin="10dp"
+                    android:layout_below="@id/azkar_rv"/>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintWidth_percent=".5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/azkar_view"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rv_quran_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/quran"
+                android:textColor="@color/black"
+                android:textSize="@dimen/titles_fs"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/almarai"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_quran_title"
+                android:background="@drawable/rv_background">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/quran_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/more_quran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="@string/more"
+                    android:textColor="@color/main_color"
+                    android:textSize="@dimen/more_text_fs"
+                    android:layout_margin="10dp"
+                    android:layout_below="@id/quran_rv"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/quran_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_below="@id/read_section">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/titles_fs"
+            android:text="@string/moreListening"
+            android:gravity="start"
+            android:layout_gravity="start"
+            android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:fontFamily="@font/almarai"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/quranLitening_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_below="@id/quran_section">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/titles_fs"
+            android:text="@string/azkarListening"
+            android:gravity="start"
+            android:layout_gravity="start"
+            android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:fontFamily="@font/almarai"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/azkarLitening_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</RelativeLayout>
+    </ScrollView>

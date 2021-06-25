@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.islamicApp.AlFurkan">
+
+    <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name="com.islamicApp.AlFurkan.Service.App"
+        android:allowBackup="true"
+        android:icon="@drawable/app_logo"
+        android:installLocation="preferExternal"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="false"
+        android:theme="@style/main_theme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:supportsRtl"
+        tools:ignore="GoogleAppIndexingWarning"
+        android:hardwareAccelerated="false">
+
+
+        <activity android:name=".ui.quranSuggestions.ui.QuranSuggetionsMPActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.quranListenActivity.activity.QuranListenActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.azkarListenActivity.ui.AzkarMediaPlayerUI"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.swarListActivity.SwarListActivity"
+            android:theme="@style/main_theme"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.azkarListActivity.AzkarListActivity"
+            android:theme="@style/main_theme"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.islamicApp.AlFurkan.ui.ayatActivity.AyatActivity"
+            android:theme="@style/swar_view" />
+
+        <activity android:name=".ui.markedAyatActivity.MarkedAyatActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.islamicApp.AlFurkan.ui.homeActivity.activity.HomePage"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <activity android:name="com.islamicApp.AlFurkan.ui.azkarActivity.AzkarActivity"
+            android:theme="@style/swar_view"/>
+
+        <activity android:name=".ui.searchActivity.ui.SearchActivity"
+            android:theme="@style/AppTheme"/>
+
+        <!-- for AdMob -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5492091545098636~2549263877" />
+
+        <activity
+            android:name=".ui.SplashScreen"
+            android:screenOrientation="portrait" android:theme="@style/splash_screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".ui.azkarListenActivity.service.AzkarListenService" />
+        <service android:name="com.islamicApp.AlFurkan.ui.quranListenActivity.service.QuranService" />
+        <service android:name=".ui.quranSuggestions.service.QuranSuggestionsService" />
+        <service android:name=".FirebaseNotification.NotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.islamicApp.AlFurkan.Recievers.MyReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="TODO"
+            tools:ignore="ExportedReceiver" />
+        <receiver
+            android:name="com.islamicApp.AlFurkan.Recievers.CallsReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.islamicApp.AlFurkan.ui.quranListenActivity.reciever.QuranReceiver" />
+        <receiver android:name="com.islamicApp.AlFurkan.ui.azkarListenActivity.reciever.AzkarReceiver" />
+        <receiver android:name="com.islamicApp.AlFurkan.ui.quranSuggestions.reciever.SuggestionsReciever" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,8 @@
+<svg id="next_btn_shape" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <circle id="Ellipse_6" data-name="Ellipse 6" cx="16" cy="16" r="16" fill="#fff"/>
+  <circle id="Ellipse_7" data-name="Ellipse 7" cx="16" cy="16" r="16" fill="#929091"/>
+  <g id="skip_next-black-24dp" opacity="0.6">
+    <path id="Path_16" data-name="Path 16" d="M0,0H32V32H0Z" fill="none"/>
+    <path id="Path_17" data-name="Path 17" d="M6,18l8.5-6L6,6ZM8,9.86,11.03,12,8,14.14ZM16,6h2V18H16Z" transform="translate(4 4)" fill="#fff"/>
+  </g>
+</svg>

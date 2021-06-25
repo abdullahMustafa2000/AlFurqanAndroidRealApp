@@ -1,0 +1,10 @@
+<svg id="playing_btn_shape" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="Group_1" data-name="Group 1">
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="50" height="50" fill="none"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="50" height="50" fill="none"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" width="50" height="50" fill="none"/>
+  </g>
+  <g id="Group_2" data-name="Group 2" transform="translate(2 2)">
+    <path id="Path_7" data-name="Path 7" d="M25,2A23,23,0,1,0,48,25,23.008,23.008,0,0,0,25,2ZM22.7,34.2H18.1V15.8h4.6Zm9.2,0H27.3V15.8h4.6Z" transform="translate(-2 -2)" fill="#77c7e5"/>
+  </g>
+</svg>

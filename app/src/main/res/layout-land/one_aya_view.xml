@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/aya_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/aya_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/ayaNum_tv"
+            android:layout_toLeftOf="@+id/ayaNum_tv"
+            android:fontFamily="@font/khat_othmany"
+            android:padding="8dp"
+            android:text="@string/quran"
+            android:textColor="@color/black"
+            android:textSize="18pt" />
+
+        <TextView
+            android:id="@+id/ayaNum_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="12pt"
+            android:text="8884"
+            android:padding="8dp"
+            android:textColor="@color/blueDark"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/aya_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintWidth_percent=".95"
+        app:layout_constraintTop_toBottomOf="@id/aya_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:background="@color/brown" />
+
+    <LinearLayout
+        android:id="@+id/pageNumView"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent=".5"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/aya_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="8dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="horizontal"
+        android:background="@drawable/page_background"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/pageNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12pt"
+            android:paddingRight="4dp"
+            android:textColor="@color/white"
+            android:text="500"
+            android:paddingEnd="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12pt"
+            android:paddingLeft="4dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/almarai"
+            android:text="صفحة"
+            android:paddingStart="4dp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "26143567239",
+    "firebase_url": "https://alfurkan-d22c3.firebaseio.com",
+    "project_id": "alfurkan-d22c3",
+    "storage_bucket": "alfurkan-d22c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26143567239:android:d6e9ba70ea63b09b5c3722",
+        "android_client_info": {
+          "package_name": "com.islamicApp.AlFurkan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26143567239-027vkdhluf47kuuasje4m46spqgqtatk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi-m8KsIexhlwkozBzAyukvmk-KYDxNxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26143567239-027vkdhluf47kuuasje4m46spqgqtatk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

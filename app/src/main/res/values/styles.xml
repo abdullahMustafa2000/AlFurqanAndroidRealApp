@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryDark">@color/main_color</item>
+        <item name="colorAccent">@color/main_color</item>
+        <item name="android:windowActivityTransitions" tools:targetApi="lollipop">true</item>
+    </style>
+
+
+    <style name="swar_view" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/blueLight</item>
+        <item name="colorPrimaryDark">@color/blueLight</item>
+        <item name="colorAccent">@color/blueLight</item>
+    </style>
+
+    <style name="splash_screen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/logo_color</item>
+        <item name="colorPrimaryDark">@color/logo_color</item>
+        <item name="colorAccent">@color/logo_color</item>
+    </style>
+
+    <style name="main_theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryDark">@color/main_color</item>
+        <item name="colorAccent">@color/main_color</item>
+    </style>
+
+</resources>

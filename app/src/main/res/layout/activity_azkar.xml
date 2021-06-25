@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.azkarActivity.AzkarActivity"
+    android:background="@color/white"
+    tools:targetApi="lollipop">
+
+    <TextView
+        android:id="@+id/hdeeth_name"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent=".9"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/almarai"
+        android:textColor="@color/white"
+        android:textSize="16pt"
+        android:textAlignment="center"
+        android:transitionName="nameTransitions"
+        android:background="@drawable/titles_shape"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        tools:targetApi="lollipop"
+        android:gravity="center_horizontal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/zekr_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/almushaf"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hdeeth_name"
+        app:layout_constraintWidth_percent=".95"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

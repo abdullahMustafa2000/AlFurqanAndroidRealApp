@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "26143567239",
+    "firebase_url": "https://alfurkan-d22c3.firebaseio.com",
+    "project_id": "alfurkan-d22c3",
+    "storage_bucket": "alfurkan-d22c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26143567239:android:d6e9ba70ea63b09b5c3722",
+        "android_client_info": {
+          "package_name": "com.islamicApp.AlFurkan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26143567239-0c5njq79svhq6kbfni3m7pohg8mimekj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.islamicApp.AlFurkan",
+            "certificate_hash": "33dad9152cf2f9b4ca7c29c763ac866da76cdae0"
+          }
+        },
+        {
+          "client_id": "26143567239-027vkdhluf47kuuasje4m46spqgqtatk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi-m8KsIexhlwkozBzAyukvmk-KYDxNxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26143567239-027vkdhluf47kuuasje4m46spqgqtatk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-5492091545098636~2549263877"
+    }
+  ],
+  "configuration_version": "1"
+}

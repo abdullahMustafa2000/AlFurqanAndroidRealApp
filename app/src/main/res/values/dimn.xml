@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="app_name_font_size">14pt</dimen>
+    <dimen name="search_text_fs">7pt</dimen>
+    <dimen name="titles_fs">12pt</dimen>
+    <dimen name="more_text_fs">9pt</dimen>
+</resources>

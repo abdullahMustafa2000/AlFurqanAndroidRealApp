@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">الفرقان</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-5492091545098636/8839146536</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-5492091545098636/5829839811</string>
+
+    <string name="quran">القران</string>
+    <string name="azkar">الاذكار</string>
+
+    <string name="audiences">السمعيات</string>
+    <string name="sebha">المسبحه</string>
+    <string name="home_icon_title">الرئيسيه</string>
+
+    <string-array name="alAzkar">
+        <item>سُبْحَانَ اللَّهِ</item>
+        <item>الْحَمْدُ للّهِ</item>
+        <item>لَا إِلَهَ إِلَّا اللَّهُ</item>
+        <item>الْلَّهُ أَكْبَرُ</item>
+        <item>الْلَّهُم صَلِّ عَلَى سَيِّدِنَا مُحَمَّد</item>
+        <item>أستغفر الله</item>
+        <item>لا حَوْلَ وَلا قُوَّةَ إِلا بِاللَّهِ</item>
+        <item>سُبْحَانَ اللَّهِ وَبِحَمْدِهِ ، سُبْحَانَ اللَّهِ الْعَظِيمِ</item>
+    </string-array>
+
+    <string name="total_tasbehat">حصيلة التسبيح</string>
+
+    <string name="copy_aya">نسخ نص الايه</string>
+    <string name="save_aya">حفظ الايه كمرجع</string>
+
+    <string name="copy_aya_tost">تم نسخ نص الايه</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="page">صفحه</string>
+    <string name="basmala">بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="moreListening">الأكثر إستماعا</string>
+    <string name="azkarListening">الأذكار مسموعة</string>
+    <string name="search">إبحث عن سورة ، آية أو قارئ</string>
+    <string name="home_search">بحث</string>
+
+    <string name="more">المزيد</string>
+    <string name="statistics">الإحصائيات</string>
+    <string name="back">عوده</string>
+    <string name="retry_connecting">إعادة المحاوله</string>
+    <string name="internet_connection">يرجى التأكد من اتصالك بالانترنت</string>
+    <string name="ayah">ايه</string>
+    <string name="sura">سورة</string>
+    <string name="reciter">قارئ</string>
+    <string name="mark_aya">حفظ الايه</string>
+    <string name="aya_marked">تم حفظ الايه</string>
+
+    <string-array name="swar_names">
+        <item>الفاتحه</item>
+        <item>البقره</item>
+        <item>آل عمران</item>
+        <item>النساء</item>
+        <item>المائدة</item>
+        <item>الأنعام</item>
+        <item>الأعراف</item>
+        <item>الأنفال</item>
+        <item>التوبة</item>
+        <item>يونس</item>
+        <item>هود</item>
+        <item>يوسف</item>
+        <item>الرعد</item>
+        <item>إبراهيم</item>
+        <item>الحجر</item>
+        <item>النحل</item>
+        <item>الإسراء</item>
+        <item>الكهف</item>
+        <item>مريم</item>
+        <item>طه</item>
+        <item>الأنبياء</item>
+        <item>الحج</item>
+        <item>المؤمنون</item>
+        <item>النّور</item>
+        <item>الفرقان</item>
+        <item>الشعراء</item>
+        <item>النّمل</item>
+        <item>القصص</item>
+        <item>العنكبوت</item>
+        <item>الرّوم</item>
+        <item>لقمان</item>
+        <item>السجدة</item>
+        <item>الأحزاب</item>
+        <item>سبأ</item>
+        <item>فاطر</item>
+        <item>يس</item>
+        <item>الصافات</item>
+        <item>ص</item>
+        <item>الزمر</item>
+        <item>غافر</item>
+        <item>فصّلت</item>
+        <item>الشورى</item>
+        <item>الزخرف</item>
+        <item>الدّخان</item>
+        <item>الجاثية</item>
+        <item>الأحقاف</item>
+        <item>محمد</item>
+        <item>الفتح</item>
+        <item>الحجرات</item>
+        <item>ق</item>
+        <item>الذاريات</item>
+        <item>الطور</item>
+        <item>النجم</item>
+        <item>القمر</item>
+        <item>الرحمن</item>
+        <item>الواقعة</item>
+        <item>الحديد</item>
+        <item>المجادلة</item>
+        <item>الحشر</item>
+        <item>الممتحنة</item>
+        <item>الصف</item>
+        <item>الجمعة</item>
+        <item>المنافقون</item>
+        <item>التغابن</item>
+        <item>الطلاق</item>
+        <item>التحريم</item>
+        <item>الملك</item>
+        <item>القلم</item>
+        <item>الحاقة</item>
+        <item>المعارج</item>
+        <item>نوح</item>
+        <item>الجن</item>
+        <item>المزّمّل</item>
+        <item>المدّثر</item>
+        <item>القيامة</item>
+        <item>الإنسان</item>
+        <item>المرسلات</item>
+        <item>النبأ</item>
+        <item>النازعات</item>
+        <item>عبس</item>
+        <item>التكوير</item>
+        <item>الإنفطار</item>
+        <item>المطفّفين</item>
+        <item>الإنشقاق</item>
+        <item>البروج</item>
+        <item>الطارق</item>
+        <item>الأعلى</item>
+        <item>الغاشية</item>
+        <item>الفجر</item>
+        <item>البلد</item>
+        <item>الشمس</item>
+        <item>الليل</item>
+        <item>الضحى</item>
+        <item>الشرح</item>
+        <item>التين</item>
+        <item>العلق</item>
+        <item>القدر</item>
+        <item>البينة</item>
+        <item>الزلزلة</item>
+        <item>العاديات</item>
+        <item>القارعة</item>
+        <item>التكاثر</item>
+        <item>العصر</item>
+        <item>الهمزة</item>
+        <item>الفيل</item>
+        <item>قريش</item>
+        <item>الماعون</item>
+        <item>الكوثر</item>
+        <item>الكافرون</item>
+        <item>النصر</item>
+        <item>المسد</item>
+        <item>الإخلاص</item>
+        <item>الفلق</item>
+        <item>الناس</item>
+    </string-array>
+
+    <string-array name="Azkar_names">
+        <item>أذكار الصباح</item>
+        <item>أذكار المساء</item>
+        <item>أذكار بعد السلام من الصلاة</item>
+        <item>أذكار النوم</item>
+        <item>أذكار من قلق في فراشه ولم ينم</item>
+        <item>أذكار الأحلام</item>
+        <item>أذكار الإستيقاظ</item>
+        <item>أذكار الصلاة</item>
+        <item>أذكار المسجد</item>
+        <item>أذكار الوضوء</item>
+        <item>أذكار دخول وخروج المنزل</item>
+        <item>أذكار دخول وخروج الخلاء</item>
+        <item>أذكار الطعام والشراب والضيف</item>
+        <item>أذكار الحج والعمرة</item>
+        <item>الرُّقية الشرعية</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="marked_text">العلامات المرجعيه</string>
+    <string name="unsave_aya">حذف من الايات المرجعية</string>
+
+</resources>
