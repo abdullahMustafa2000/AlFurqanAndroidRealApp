@@ -7,6 +7,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.islamicApp.AlFurkan.db.tables.SqliteAyaModel;
 import com.islamicApp.AlFurkan.R;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -26,32 +30,25 @@ import java.util.List;
 
 public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.AyaViewHolder> {
     
-    Activity context;
-    List<SqliteAyaModel> suraAyat;
-    List<SqliteAyaModel> allMushaf;
-    List<Integer> markedAyat;
+    private final Activity context;
+    private List<SqliteAyaModel> suraAyat;
     AyatViewModel ayatViewModel;
 
-    public AyatAdapter(AppCompatActivity context, int suraIndex, AyatViewModel ayatViewModel) {
+
+    public AyatAdapter(AppCompatActivity context, AyatViewModel ayatViewModel) {
         this.context = context;
         this.ayatViewModel = ayatViewModel;
-        ayatViewModel.getSuraAyat(suraIndex);
-        ayatViewModel.suraMutableLiveData.observe(context, sqliteAyaModels -> {
-            suraAyat = sqliteAyaModels;
-            notifyDataSetChanged();
-        });
-        ayatViewModel.getAyatFromSQl();
-        ayatViewModel.allMushafMutableLiveData.observe(context, sqliteAyaModels -> {
-            allMushaf = sqliteAyaModels;
-            notifyDataSetChanged();
-        });
     }
 
-    public void setMarkedAyat(List<Integer> markedAyat) {
-        this.markedAyat = markedAyat;
-        notifyDataSetChanged();
+
+    private List<SqliteAyaModel> getSuraAyat() {
+        return suraAyat;
     }
 
+
+    public void setSuraAyat(List<SqliteAyaModel> suraAyat) {
+        this.suraAyat = suraAyat;
+    }
     String suraName;
     int ayaPos;
     boolean firstOpen = true;
@@ -81,7 +78,7 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.AyaViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull final AyaViewHolder holder, final int position) {
-        final SqliteAyaModel ayaModel = suraAyat.get(position);
+        final SqliteAyaModel ayaModel = getSuraAyat().get(position);
 
         holder.ayaTv.setText(ayaModel.getAyaTashkelText());
 
@@ -89,8 +86,7 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.AyaViewHolder>
         holder.ayaNumTv.setText(ayaNum);
 
         final String pageNum = String.format("%d", ayaModel.getPageNum());
-        int ayaIndex = ayaModel.getAyaId();
-        setPageNumber(ayaIndex, holder, pageNum);
+        setPageNumber(ayaModel, holder, pageNum);
 
         holder.itemView.setOnLongClickListener(v -> {
             showPup(holder, ayaModel.getAyaNum(), ayaModel, ayatViewModel, context);
@@ -108,23 +104,15 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.AyaViewHolder>
         findMarkedAyat(ayaModel, holder);
     }
 
-    private void findMarkedAyat(SqliteAyaModel ayaModel, AyaViewHolder holder) {
-        if (markedAyat != null) {
-            if (markedAyat.contains(ayaModel.getAyaId())) {
-                holder.itemView.setBackgroundColor(Color.parseColor("#805CD38C"));
-            } else
-                holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-        }
-    }
-
     @Override
     public int getItemCount() {
-        if (suraAyat != null)
-        return suraAyat.size();
+        if (getSuraAyat() != null)
+        return getSuraAyat().size();
         return 0;
     }
 
     public static class AyaViewHolder extends RecyclerView.ViewHolder {
+
         private final View pageNumView;
         TextView ayaTv, pageNum, ayaNumTv;
         public AyaViewHolder(@NonNull View itemView) {
@@ -136,22 +124,24 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.AyaViewHolder>
         }
     }
 
-    private void setPageNumber(int ayaIndex, AyaViewHolder holder, String pageNum) {
-        if (allMushaf != null && ayaIndex <= allMushaf.size() - 1) {
-            if (allMushaf.get(ayaIndex - 1).getPageNum() != allMushaf.get(ayaIndex).getPageNum()) {
-                holder.pageNumView.setVisibility(View.VISIBLE);
-                holder.pageNum.setText(pageNum);
-            } else {
-                holder.pageNumView.setVisibility(View.GONE);
-                holder.pageNum.setText("");
-            }
-        } else {
+    private void findMarkedAyat(SqliteAyaModel ayaModel, AyaViewHolder holder) {
+        if (ayaModel.getIsMarked() == 1) {
+            holder.ayaTv.setBackgroundColor(Color.parseColor("#805CD38C"));
+        } else
+            holder.ayaTv.setBackgroundColor(Color.parseColor("#FFFFFF"));
+    }
+
+    private void setPageNumber(SqliteAyaModel ayaModel, AyaViewHolder holder, String pageNum) {
+        if(ayaModel.getIsLastAyaOnPage() == 1) {
             holder.pageNumView.setVisibility(View.VISIBLE);
             holder.pageNum.setText(pageNum);
+        }else {
+            holder.pageNumView.setVisibility(View.GONE);
+            holder.pageNum.setText("");
         }
     }
 
-    private void showPup(AyaViewHolder holder, int ayaNum, SqliteAyaModel ayaModel, AyatViewModel ayatViewModel, Activity context) {
+    private void showPup(AyaViewHolder holder, int ayaNum, SqliteAyaModel ayaModel, AyatViewModel ayatViewModel, Context context) {
         PopupMenu popup = new PopupMenu(context, holder.ayaTv);
 
         try {
@@ -171,7 +161,7 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.AyaViewHolder>
                 return true;
 
             } else if (item.getItemId() == R.id.mark_aya) {
-                addedMarkedAya(ayaModel, ayatViewModel, context);
+                addedMarkedAya(ayaModel, ayatViewModel, holder);
                 return true;
             }
             return false;
@@ -180,8 +170,16 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.AyaViewHolder>
         popup.show();
     }
 
-    private void addedMarkedAya(SqliteAyaModel ayaModel, AyatViewModel ayatViewModel, Activity context) {
-        ayatViewModel.addAyaToDb(ayaModel);
+    private void addedMarkedAya(SqliteAyaModel ayaModel, @NotNull AyatViewModel ayatViewModel, AyaViewHolder holder) {
+        ayatViewModel.addAyaToMarked(ayaModel);
+        ayatViewModel.addedMarkedAyaMutableLiveData.observe((LifecycleOwner) context, added -> {
+            if (added) {
+                Toast.makeText(context, context.getString(R.string.aya_marked), Toast.LENGTH_SHORT).show();
+                ayaModel.setIsMarked(1);
+                findMarkedAyat(ayaModel, holder);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     private void copyAya(String suraName, int ayaNum, SqliteAyaModel ayaModel) {
@@ -195,7 +193,7 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.AyaViewHolder>
     private void startAnimation(Context context, final AyaViewHolder holder, final boolean doWhen, SqliteAyaModel ayaModel) {
         int colorFrom = context.getResources().getColor(R.color.heavy_gray_bg);
         int colorTo;
-        if (markedAyat!=null && markedAyat.contains(ayaModel.getAyaId()))
+        if (ayaModel.getIsMarked() == 1)
             colorTo = context.getResources().getColor(R.color.lightBrown);
         else
             colorTo = context.getResources().getColor(R.color.white);

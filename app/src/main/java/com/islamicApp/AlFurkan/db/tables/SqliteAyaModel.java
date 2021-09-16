@@ -8,8 +8,24 @@ public class SqliteAyaModel {
 
     @PrimaryKey(autoGenerate = true)
     public int id;
-    private int ayaId, ayaNum, pageNum, suraNum, chapterNum;
+    private int ayaId, ayaNum, pageNum, suraNum, chapterNum, isLastAyaOnPage, isMarked;
     private String suraName, ayaNormalText, ayaTashkelText, enAyah;
+
+    public int getIsMarked() {
+        return isMarked;
+    }
+
+    public void setIsMarked(int isMarked) {
+        this.isMarked = isMarked;
+    }
+
+    public int getIsLastAyaOnPage() {
+        return isLastAyaOnPage;
+    }
+
+    public void setIsLastAyaOnPage(int isLastAyaOnPage) {
+        this.isLastAyaOnPage = isLastAyaOnPage;
+    }
 
     public SqliteAyaModel() {
     }

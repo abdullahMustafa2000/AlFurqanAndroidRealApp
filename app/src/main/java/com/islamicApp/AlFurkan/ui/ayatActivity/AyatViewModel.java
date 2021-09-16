@@ -3,6 +3,8 @@ package com.islamicApp.AlFurkan.ui.ayatActivity;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
+import android.util.Pair;
 import android.widget.Toast;
 
 import androidx.lifecycle.AndroidViewModel;
@@ -16,6 +18,8 @@ import com.islamicApp.AlFurkan.R;
 import com.islamicApp.AlFurkan.db.LocalDbClass;
 import com.islamicApp.AlFurkan.db.daos.MarkedAyaDao;
 import com.islamicApp.AlFurkan.db.tables.SqliteAyaModel;
+
+import org.w3c.dom.Attr;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,45 +42,27 @@ public class AyatViewModel extends AndroidViewModel {
 
     QuranDBOpener db;
     MarkedAyaDao ayaDao;
-    MutableLiveData<List<SqliteAyaModel>> suraMutableLiveData = new MutableLiveData<>();
-    MutableLiveData<List<SqliteAyaModel>> allMushafMutableLiveData = new MutableLiveData<>();
     MutableLiveData<Boolean> addedMarkedAyaMutableLiveData = new MutableLiveData<>();
+
     public AyatViewModel(Application context) {
         super(context);
         db = new QuranDBOpener(context);
         ayaDao = LocalDbClass.getInstance(context).getMarkedAyaDao();
     }
 
-    public void getAyatFromSQl() {
-        Observable.create((ObservableOnSubscribe<Void>) emitter -> {
-
-        }).map(aVoid -> db.getAllAyat())
-        .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-        .subscribe(sqliteAyaModels -> allMushafMutableLiveData.setValue(sqliteAyaModels));
-
-    }
-
-    public void getSuraAyat(int suraIndex) {
-        Observable.create((ObservableOnSubscribe<Integer>) emitter -> {
+    public List<SqliteAyaModel> getSuraAyat(int suraIndex) {
+        /*Observable.create((ObservableOnSubscribe<Integer>) emitter -> {
             emitter.onNext(suraIndex);
         }).map(integer -> db.getAyatBySuraIndex(suraIndex + 1))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(sqliteAyaModels -> suraMutableLiveData.setValue(sqliteAyaModels));
+                .subscribe(sqliteAyaModels -> suraMutableLiveData.setValue(sqliteAyaModels));*/
+        return db.getAyatBySuraIndex(suraIndex + 1);
 
     }
 
-    public void addAyaToDb(SqliteAyaModel ayaModel) {
-        Single.create((SingleOnSubscribe<Boolean>) emitter ->
-                ayaDao.addAya(ayaModel)
-        )
-                .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread()).subscribe((aBoolean, throwable) -> {
-            if (aBoolean)
-                addedMarkedAyaMutableLiveData.setValue(aBoolean);
-            else
-                addedMarkedAyaMutableLiveData.setValue(false);
-        });
+    public void addAyaToMarked(SqliteAyaModel ayaModel) {
+        addedMarkedAyaMutableLiveData.setValue(db.setIsMarked(ayaModel.getAyaId(), 1));
     }
 
     /*public void removeAyaFromDb(SqliteAyaModel ayaModel) {
@@ -90,8 +76,5 @@ public class AyatViewModel extends AndroidViewModel {
                 });
     }*/
 
-    public LiveData<List<Integer>> getMarkedAyat() {
-        return ayaDao.getMarkedIds();
-    }
 }
 

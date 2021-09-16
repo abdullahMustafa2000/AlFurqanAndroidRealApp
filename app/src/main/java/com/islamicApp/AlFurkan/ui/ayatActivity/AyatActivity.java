@@ -1,6 +1,7 @@
 package com.islamicApp.AlFurkan.ui.ayatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -78,18 +79,12 @@ public class AyatActivity extends AppCompatActivity {
     public void setAyatRecyclerview(int ayaPos, int suraPos) {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-        quranAyaAdapter = new AyatAdapter(this,
-                suraPos, ayatViewModel);
-        ayatViewModel.getMarkedAyat().observe(this, sqliteAyaModels -> {
-            if (sqliteAyaModels != null) {
-                quranAyaAdapter.setMarkedAyat(sqliteAyaModels);
-                quranAyaAdapter.notifyDataSetChanged();
-            }
-        });
-        ayatViewModel.addedMarkedAyaMutableLiveData.observe(this, added -> {
-            if (added)
-                Toast.makeText(this, getString(R.string.aya_marked), Toast.LENGTH_SHORT).show();
-        });
+        quranAyaAdapter = new AyatAdapter(this, ayatViewModel);
+
+        // current sura ayat
+        quranAyaAdapter.setSuraAyat(ayatViewModel.getSuraAyat(suraPos));
+        quranAyaAdapter.notifyDataSetChanged();
+
         quranAyaAdapter.setSuraName(suraname);
         quranAyaAdapter.setAyaPos(ayaPos);
 

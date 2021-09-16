@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.islamicApp.AlFurkan.db.daos.MarkedAyaDao;
 import com.islamicApp.AlFurkan.db.tables.SqliteAyaModel;
 
-@Database(entities = {SqliteAyaModel.class}, version = 1, exportSchema = false)
+@Database(entities = {SqliteAyaModel.class}, version = 2, exportSchema = false)
 public abstract class LocalDbClass extends RoomDatabase {
 
     public abstract MarkedAyaDao getMarkedAyaDao();

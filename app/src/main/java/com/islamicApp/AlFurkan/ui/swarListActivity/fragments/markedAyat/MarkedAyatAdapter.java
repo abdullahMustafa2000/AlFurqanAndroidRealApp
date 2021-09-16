@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.islamicApp.AlFurkan.Classes.StaticStrings;
@@ -20,11 +22,20 @@ import java.util.List;
 public class MarkedAyatAdapter extends RecyclerView.Adapter<MarkedAyatAdapter.MarkedAyatViewHolder> {
 
     private List<SqliteAyaModel> ayatList;
-    private Context context;
-    private String[] swarNames;
+    private final Context context;
+    private final String[] swarNames;
+    private OnBookMarkClicked onBookMarkClicked;
 
-    public MarkedAyatAdapter(List<SqliteAyaModel> ayatList, Context context) {
+    public void setOnBookMarkClicked(OnBookMarkClicked onBookMarkClicked) {
+        this.onBookMarkClicked = onBookMarkClicked;
+    }
+
+    public void setAyatList(List<SqliteAyaModel> ayatList) {
         this.ayatList = ayatList;
+        notifyDataSetChanged();
+    }
+
+    public MarkedAyatAdapter(Context context) {
         this.context = context;
         swarNames = context.getResources().getStringArray(R.array.swar_names);
     }
@@ -47,7 +58,13 @@ public class MarkedAyatAdapter extends RecyclerView.Adapter<MarkedAyatAdapter.Ma
 
         holder.markedAyaTv.setText(aya);
 
-        holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, AyatActivity.class)
+        if (onBookMarkClicked != null)
+            holder.bookMarkIv.setOnClickListener(view -> {
+                holder.bookMarkIv.setBackground(ResourcesCompat.getDrawable(context.getResources(), R.drawable.ic_un_bookmark, null));
+                onBookMarkClicked.onClicked(ayaModel);
+            });
+
+        holder.textLayout.setOnClickListener(v -> context.startActivity(new Intent(context, AyatActivity.class)
                 .putExtra(StaticStrings.INTENT_SURA_POSITION, ayaModel.getSuraNum() - 1)
                 .putExtra(StaticStrings.INTENT_SURA_NAME, suraName)
                 .putExtra(StaticStrings.INTENT_AYA_INDEX, ayaModel.getAyaNum() - 1)));
@@ -55,15 +72,23 @@ public class MarkedAyatAdapter extends RecyclerView.Adapter<MarkedAyatAdapter.Ma
 
     @Override
     public int getItemCount() {
-        return ayatList.size();
+        return ayatList != null? ayatList.size(): 0;
     }
 
     public static class MarkedAyatViewHolder extends RecyclerView.ViewHolder {
         TextView markedAyaTv, markedSuraTv;
+        View textLayout;
+        ImageView bookMarkIv;
         public MarkedAyatViewHolder(@NonNull View itemView) {
             super(itemView);
             markedAyaTv = itemView.findViewById(R.id.marked_ayah_tv);
             markedSuraTv = itemView.findViewById(R.id.marked_surah_name_tv);
+            textLayout = itemView.findViewById(R.id.tv_layout);
+            bookMarkIv = itemView.findViewById(R.id.bookmark_iv);
         }
+    }
+
+    public interface OnBookMarkClicked{
+        void onClicked(SqliteAyaModel ayaModel);
     }
 }

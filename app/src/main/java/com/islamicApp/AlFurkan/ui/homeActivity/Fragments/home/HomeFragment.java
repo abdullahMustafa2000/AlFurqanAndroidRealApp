@@ -11,16 +11,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.islamicApp.AlFurkan.ui.ayatActivity.AyatActivity;
 import com.islamicApp.AlFurkan.ui.azkarActivity.AzkarActivity;
 import com.islamicApp.AlFurkan.ui.azkarListenActivity.ui.AzkarMediaPlayerUI;
@@ -59,7 +60,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     protected ProgressBar homeLoadingProgressBar;
 
     SharedPreferences sharedPref;
-    private InterstitialAd interstitialAd;
+    public InterstitialAd interstitialAd;
     private AzkarListenHomeAdapter listenHomeAdapter;
 
     @Override
@@ -73,7 +74,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         showQuranRecyclerview();
         showQuranListenRecyclerview();
         showAzkarListenRecyclerview();
-        getInterstitinlaAd();
+        getInterstitilAd();
         return view;
     }
 
@@ -206,8 +207,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         } else if (view.getId() == R.id.more_quran) {
             startActivity(new Intent(this.getActivity(), SwarListActivity.class));
         } else if (view.getId() == R.id.search_bar_view) {
-            if (interstitialAd.isLoaded())
-                interstitialAd.show();
+            if (interstitialAd != null)
+                interstitialAd.show(HomeFragment.this.getActivity());
             else
                 startSearchActivityIntent();
         }
@@ -241,39 +242,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         homeLoadingProgressBar = (ProgressBar) rootView.findViewById(R.id.home_loading_progressBar);
     }
 
-    public void getInterstitinlaAd(){
-        interstitialAd = new InterstitialAd(this.getActivity());
-        interstitialAd.setAdUnitId("ca-app-pub-5492091545098636/5829839811");
-        interstitialAd.loadAd(new AdRequest.Builder().build());
-
-        interstitialAd.setAdListener(new AdListener() {
+    public void getInterstitilAd(){
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(this.getActivity(), String.valueOf(R.string.interstitial_ad_unit_id), adRequest, new InterstitialAdLoadCallback() {
             @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                super.onAdLoaded(interstitialAd);
+                HomeFragment.this.interstitialAd = interstitialAd;
             }
 
             @Override
-            public void onAdFailedToLoad(LoadAdError loadAdError) {
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                 super.onAdFailedToLoad(loadAdError);
-                interstitialAd.loadAd(new AdRequest.Builder().build());
-            }
 
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when the ad is displayed.
             }
-
-            @Override
-            public void onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
-                //Toast.makeText(HomePage.this, "ad clicked", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdClosed() {
-                // Code to be executed when the interstitial ad is closed.
-                startSearchActivityIntent();
-                interstitialAd.loadAd(new AdRequest.Builder().build());            }
         });
     }
 

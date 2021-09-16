@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +42,15 @@ public class MarkedAyatFragment extends Fragment {
 
     public void getAyatList() {
         markedAyatRv.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        viewModel.getAyaLike(1).observe(this.getActivity(), sqliteAyaModels -> {
-            MarkedAyatAdapter ayatAdapter = new MarkedAyatAdapter(sqliteAyaModels, this.getActivity());
-            markedAyatRv.setAdapter(ayatAdapter);
+        viewModel.getMarkedAyatList();
+        MarkedAyatAdapter ayatAdapter = new MarkedAyatAdapter(this.getActivity());
+        viewModel.markedAyatMutableLiveData.observe(this.getActivity(), sqliteAyaModels -> {
+            ayatAdapter.setAyatList(sqliteAyaModels);
+            ayatAdapter.notifyDataSetChanged();
+        });
+        markedAyatRv.setAdapter(ayatAdapter);
+        ayatAdapter.setOnBookMarkClicked(ayaModel -> {
+            viewModel.deleteAyaFromMarked(ayaModel.getAyaId());
             ayatAdapter.notifyDataSetChanged();
         });
 
